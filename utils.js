@@ -53,4 +53,18 @@ export const authToken = (req, res, next) => {
         req.user = credentials.user;
         next();
     });
-};;
+};
+
+//creamos base de productos con Faker
+export const generateProducts = () => {
+    return{
+        _id: faker.database.mongodbObjectId(),
+        title: faker.commerce.productName(),
+        description: faker.commerce.productDescription(),
+        code: faker.string.alpha(5),
+        price: faker.commerce.price(),
+        thumbnail: faker.image.avatar(),
+        stock: faker.number.int(500),
+        available: faker.datatype.boolean(),
+    }
+};

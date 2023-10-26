@@ -14,7 +14,7 @@ import userRouter from './routes/Mongo/users.router.js'
 import views from './routes/Mongo/view.router.js';
 import ticketRouter from './routes/Mongo/ticket.router.js';
 
-//import managers
+
 /* import dotenv from 'dotenv'; */
 import configEnv from './config/env.config.js';
 import './config/db.js'
