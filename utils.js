@@ -2,7 +2,8 @@ import {fileURLToPath} from 'url'
 import { dirname } from 'path'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-import envCongif from './config/env.config.js'
+import envCongif from './config/config.js'
+import {fakerES as faker} from '@faker-js/faker';
 // Encriptacion
 export const createHash = password => bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 export const isValidPassword = (user, password) => bcrypt.compareSync(password, user.password);

@@ -1,4 +1,5 @@
 //import dependencias
+//import dependencias
 import express from 'express';
 import {__dirname} from './utils.js';
 
@@ -7,16 +8,17 @@ import handlebars from 'express-handlebars';
 import cookieParser from 'cookie-parser';
 
 //import router
-import productRoutes from './routes/Mongo/product.router.js'
-import cartRoutes from './routes/Mongo/cart.router.js';
-import usersViewRouter from './routes/Mongo/users.views.router.js';
-import userRouter from './routes/Mongo/users.router.js'
-import views from './routes/Mongo/view.router.js';
-import ticketRouter from './routes/Mongo/ticket.router.js';
+import productRoutes from './routes/mongo/product.router.js'
+import cartRoutes from './routes/mongo/cart.router.js';
+import usersViewRouter from './routes/mongo/users.views.router.js';
+import userRouter from './routes/mongo/users.router.js'
+import views from './routes/mongo/views.router.js';
+import ticketRouter from './routes/mongo/ticket.router.js';
+import mockProd from './routes/mock/mock.router.js';
 
-
-/* import dotenv from 'dotenv'; */
-import configEnv from './config/env.config.js';
+//import managers
+//* import dotenv from 'dotenv'; */
+import configEnv from './config/config.js';
 import './config/db.js'
 
 //PARA SESSION
@@ -54,7 +56,7 @@ app.use(session({
     mongoUrl: configEnv.mongoUrl,
     ttl: 60,
     secret: "coderS3cr3t",
-    resave: true, //guarda en memoria
+    resave: true, 
     saveUninitialized: false, 
     //lo guarda apenas se crea
 }));
@@ -67,6 +69,7 @@ app.use("/carts", views);
 app.use("/users", usersViewRouter);
 app.use("/api/users", userRouter);
 app.use("/api/ticket", ticketRouter);
+app.use("/mockingproducts", mockProd);
 
 
 const PORT = configEnv.port ;
