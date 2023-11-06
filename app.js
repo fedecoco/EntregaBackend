@@ -1,4 +1,4 @@
-//import dependencias
+
 //import dependencias
 import express from 'express';
 import {__dirname} from './utils.js';
@@ -27,8 +27,11 @@ import session from 'express-session';
 //import for passport
 import passport from 'passport';
 import initializePassport from './config/passport.config.js';
+//Logger
 
+import { useLogger } from './config/logger.config.js';
 
+const log = useLogger();
 /* dotenv.config(); */
 const app = express();
 
@@ -70,6 +73,9 @@ app.use("/users", usersViewRouter);
 app.use("/api/users", userRouter);
 app.use("/api/ticket", ticketRouter);
 app.use("/mockingproducts", mockProd);
+app.use("/loggerTest", loggerTest);
+
+
 
 
 const PORT = configEnv.port ;
